@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex CSS Helper</title>
+    <style>
+        main {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        fieldset {
+            border: none;
+        }
+
+        .div {
+            min-width: 50px;
+            min-height: 50px;
+            font-size: 2em;
+            background: lime;
+            border: 1px solid;
+            border-radius: 5px;
+        }
+
+
+        .visualisation>div {
+            display: block;
+            flex-direction: row;
+            justify-content: start;
+            align-items: stretch;
+            border-radius: 5px;
+            background-color: beige;
+            width: 400px;
+            height: 400px;
+        }
+
+        .div2 {
+            background: red;
+        }
+
+        .css-body {
+            margin-left: 20px;
+        }
+
+        .css-body>* {
+            margin: 2px;
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+        .flex-item {
+            font-size: 1.3rem;
+        }
+
+        select {
+            font-size: .8em;
+        }
+
+        .flex-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flex-item {
+            border: 1px blue solid;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 5px;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <article class="flex-row">
+            <form class="flex-item rule">
+                <div class="rule">
+                    <div class="container">
+                        <h2>.container {</h2>
+
+                        <div class="css-body">
+                            <label for="input_dispaly_fieldset">display: </label>
+                            <select id="input_dispaly_fieldset">
+                                <option value="block">block;
+                                <option value="inline-block">inline-block;
+                                <option value="none">none;
+                                <option value="flex">flex;
+                            </select>
+                            <br>
+
+                            <label for="input_flex-direction_fieldset">flex-direction:</label>
+                            <select id="input_flex-direction_fieldset">
+                                <option value="row">row;
+                                <option value="row-reverse">row-reverse;
+                                <option value="column">column;
+                                <option value="column-reverse">column-reverse;
+                            </select>
+                            <br>
+
+                            <label for="input_justify-content_fieldset">justify-content:</label>
+                            <select id="input_justify-content_fieldset">
+                                <option value="start">start;
+                                <option value="end">end;
+                                <option value="flex-start">start;
+                                <option value="flex-end">flex-end;
+                                <option value="center">center;
+                                <option value="space-between">space-between;
+                                <option value="space-around">space-around;
+                                <option value="space-evenly">space-evenly;
+                            </select>
+                            <br>
+
+                            <label for="input_align-items_fieldset">align-items:</label>
+                            <select id="input_align-items_fieldset">
+                                <option value="stretch">stretch;
+                                <option value="normal">normal;
+                                <option value="center">center;
+                                <option value="start">start;
+                                <option value="end">end;
+                                <option value="flex-start">flex-start;
+                                <option value="flex-end">flex-end;
+                                <option value="self-start">self-start;
+                                <option value="self-end">self-end;
+                            </select>
+
+                        </div>
+                        <h2>}</h2><br>
+                    </div>
+                    <div class="item">
+                        <h2>.item {</h2>
+
+                        <div class="css-body">
+                            <label for="input_align-self_fieldset">align-self:</label>
+                            <select id="input_align-self_fieldset">
+                                <option value="auto">auto;
+                                <option value="stretch">stretch;
+                                <option value="center">center;
+                                <option value="flex-start">flex-start;
+                                <option value="flex-end">flex-end;
+                                <option value="baseline">baseline;
+                                <option value="revert">revert;
+                                <option value="stretch">stretch;
+                                <option value="revert-layer">revert-layer;
+                                <option value="unset">unset;
+                            </select>
+                            <br>
+
+                            <label for="input_order_fieldset">order:</label>
+                            <select id="input_order_fieldset">
+                                <option value="0">0;
+                                <option value="-1">-1;
+                                <option value="1">1;
+                                <option value="2">2;
+                                <option value="5">3;
+                                <option value="-5">-3;
+                                <option value="unset">unset;
+                            </select>
+                            <br>
+
+                            <label for="input_margin-left_fieldset">margin-left:</label>
+                            <select id="input_margin-left_fieldset">
+                                <option value="0">0;
+                                <option value="auto">auto;
+                                <option value="20px">20px;
+                                <option value="unset">unset;
+                            </select>
+                            <br>
+
+                            <label for="input_margin-top_fieldset">margin-top:</label>
+                            <select id="input_margin-top_fieldset">
+                                <option value="0">0;
+                                <option value="auto">auto;
+                                <option value="20px">20px;
+                                <option value="unset">unset;
+                            </select>
+                            <br>
+                        </div>
+
+                        <h2>}</h2>
+                    </div>
+                </div>
+            </form>
+
+            <div class="flex-item visualisation">
+                <div class="container_view">
+                    <div class="div div1">1</div>
+                    <div class="div div2">2</div>
+                    <div class="div div3">3</div>
+                    <div class="div div4">4</div>
+                    <div class="div div5">5</div>
+                </div>
+            </div>
+        </article>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
