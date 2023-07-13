@@ -1,91 +1,82 @@
-// container
-let display = 'block';
-let flexDirection = 'row';
-let justifyContent = 'start';
-let alignItems = 'stretch';
+const properties_1 = {
+    container: {
+        display: 'block',
+        flexDirection: 'row',
+        justifyContent: 'start',
+        alignItems: 'stretch'
+    },
+    item: {
+        alignSelf: 'stretch',
+        order: 0,
+        marginLeft: 0,
+        marginTop: 0
+    }
+};
 
-// item
-let alignSelf = 'stretch';
-let order = 0;
-let marginLeft = 0;
-let marginTop = 0;
+const properties_2 = {
+    container: {
+        flexWrap: 'wrap',
+        alignContent: 'stretch'
+    },
+    item: {}
+};
 
 function calcStyle() {
-    // container
-    document.querySelector('#input_dispaly_fieldset').addEventListener('click', (d) => {
-        display = d.target.value;
-        setStyle('display');
+    ['display', 'flex-direction', 'justify-content', 'align-items'].forEach(elName => {
+        document.querySelector(`#input_${elName}_fieldset`).addEventListener('click', (d) => {
+            jsName = changeFromCSSToJSStyle(elName);
+            properties_1.container[jsName] = d.target.value;
+            setStyle('container_1', jsName);
+        });
     });
-
-    document.querySelector('#input_flex-direction_fieldset').addEventListener('click', (d) => {
-        flexDirection = d.target.value;
-        setStyle('flexDirection');
+    ['align-self', 'order', 'margin-left', 'margin-left', 'margin-top'].forEach(elName => {
+        document.querySelector(`#input_${elName}_fieldset`).addEventListener('click', (d) => {
+            jsName = changeFromCSSToJSStyle(elName);
+            properties_1.item[jsName] = d.target.value;
+            setStyle('item_1', jsName);
+        });
     });
-
-    document.querySelector('#input_justify-content_fieldset').addEventListener('click', (d) => {
-        justifyContent = d.target.value;
-        setStyle('justifyContent');
-    });
-
-    document.querySelector('#input_align-items_fieldset').addEventListener('click', (d) => {
-        alignItems = d.target.value;
-        setStyle('alignItems');
-    });
-
-    // item
-    document.querySelector('#input_align-self_fieldset').addEventListener('click', (d) => {
-        alignSelf = d.target.value;
-        setStyle('alignSelf');
-    });
-
-    document.querySelector('#input_order_fieldset').addEventListener('click', (d) => {
-        order = d.target.value;
-        setStyle('order');
-    });
-
-    document.querySelector('#input_margin-left_fieldset').addEventListener('click', (d) => {
-        marginLeft = d.target.value;
-        setStyle('marginLeft');
-    });
-
-    document.querySelector('#input_margin-top_fieldset').addEventListener('click', (d) => {
-        marginTop = d.target.value;
-        setStyle('marginTop');
+    ['flex-wrap', 'justify-content', 'align-content'].forEach(elName => {
+        document.querySelector(`#input_${elName}_fieldset_2`).addEventListener('click', (d) => {
+            jsName = changeFromCSSToJSStyle(elName);
+            properties_2.container[jsName] = d.target.value;
+            setStyle('container_2', jsName);
+        });
     });
 }
 
-function setStyle(attribute) {
-    const containerView = document.querySelector('.container_view');
-    const itemView = document.querySelector('.div2');
-    switch (attribute) {
-        case 'display':
-            containerView.style.display = display;
+function setStyle(objName, attribute) {
+    switch (objName) {
+        case 'container_1':
+            const containerView = document.querySelector('.container_view')
+            containerView.style[attribute] = properties_1.container[attribute];
             break;
-        case 'flexDirection':
-            containerView.style.flexDirection = flexDirection;
+        case 'item_1':
+            const itemView = document.querySelector('.div-p1-2');
+            itemView.style[attribute] = properties_1.item[attribute];
             break;
-        case 'justifyContent':
-            containerView.style.justifyContent = justifyContent;
-            break;
-        case 'alignItems':
-            containerView.style.alignItems = alignItems;
-            break;
-        case 'alignSelf':
-            itemView.style.alignSelf = alignSelf;
-            break;
-        case 'order':
-            itemView.style.order = order;
-            break;
-        case 'marginLeft':
-            itemView.style.marginLeft = marginLeft;
-            break;
-        case 'marginTop':
-            itemView.style.marginTop = marginTop;
+        case 'container_2':
+            const containerView2 = document.querySelector('.container_view_2')
+            containerView2.style[attribute] = properties_2.container[attribute];
             break;
     }
+}
 
-
-
+function changeFromCSSToJSStyle(name) {
+    name = name.split('-');
+    if (name.length === 1) {
+        return name[0];
+    } else {
+        let res;
+        name.forEach((n, i) => {
+            if (i === 0) {
+                res = n;
+            } else {
+                res += name[i].charAt(0).toUpperCase() + name[i].slice(1);
+            }
+        });
+        return res;
+    }
 }
 
 calcStyle();
